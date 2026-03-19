@@ -1,0 +1,58 @@
+FRANCK AXEL KOUAMÉ
+📍 Cergy / Paris |
+
+📞 +33 7 59 61 82 15
+
+📧 franckaxelk26@gmail.com
+
+Langues : Français (Courant)| Anglais (Intermediaire)
+
+PROFIL
+
+Étudiant en Bachelor 2 Systèmes, Réseaux et Sécurité à l'IPI Toulouse, je recherche une alternance pour ma
+3ème année à partir de septembre 2026. Fort d'une expérience solide en support IT et gestion de réseaux, je
+maîtrise l'administration système et les outils de supervision.
+
+COMPÉTENCES TECHNIQUES
+
+      Virtualisation : Proxmox VE (serveurs et postes de travail), Haute disponibilité et sauvegarde.
+      Automatisation : Ansible (déploiement et configuration automatisés).
+      Réseaux : Mise en place de VLAN, DHCP, DNS, configuration de routeurs, switchs et points
+       d'accès.
+      Supervision & Gestion : Zabbix, Centreon, GLPI (parc informatique, tickets et inventaire).
+      Administration : Gestion Active Directory (groupes de sécurité, droits d’accès), Microsoft 365
+       (MFA, boîtes mails).
+
+EXPÉRIENCES PROFESSIONNELLES
+
+Technicien Support IT | CEFFAGE (Paris)
+
+Mars 2026 – Mai 2026
+
+      Supervision : Mise en place de sondes Zabbix et création d'alertes personnalisées pour la
+       maintenance préventive.
+      Infrastructure : Création et migration de machines virtuelles sur serveurs physiques.
+      Sécurité : Gestion des accès, groupes de sécurité et sécurisation via l'authentification MFA.
+
+Agent Support Informatique | GALERIES PEYRISSAC (Abidjan)
+
+Octobre 2021 – Juin 2025
+
+      Maintenance préventive et corrective d’un parc informatique et assistance aux utilisateurs.
+      Gestion et mise à jour de la base de données articles.
+
+FORMATION
+
+      Bachelor 2 Systèmes, Réseaux et Sécurité – IPI Toulouse (Depuis 2025).
+      Licence Pro Réseaux Informatiques et Télécommunication – HETEC Abidjan (2018-2019).
+      BTS Réseaux Informatiques et Télécommunication – HETEC Abidjan (2017-2018).
+
+PROJETS PERSONNELS
+     Auto-formation DevOps : Apprentissage continu sur Kubernetes, Loki et les technologies Cloud.
+     Laboratoire domestique (Homelab) : Test de déploiements automatisés avec Ansible et Terraform.
+
+ATOUTS & INTÉRÊTS
+
+     Atouts : Rigueur, esprit d'analyse, résolution de problèmes et curiosité technologique.
+     Loisirs : Cuisine, Sport, Musique.
+
