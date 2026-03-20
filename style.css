@@ -534,6 +534,18 @@ body:hover .cursor { opacity: 1; }
   50% { opacity: 1; transform: scale(1.1); }
 }
 
+/* Avatar Photo */
+.avatar-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
 .floating-badge {
   position: absolute;
   display: flex;
@@ -1358,7 +1370,20 @@ body:hover .cursor { opacity: 1; }
   font-weight: 600;
 }
 
-.form-success svg { width: 20px; height: 20px; }
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.25);
+  color: var(--accent-2);
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.form-success svg, .form-error svg { width: 20px; height: 20px; }
 
 /* ===========================
    FOOTER
@@ -1439,6 +1464,18 @@ body:hover .cursor { opacity: 1; }
   transform: translateY(-3px);
 }
 
+.social-linkedin:hover {
+  background: rgba(0, 119, 181, 0.2);
+  border-color: #0077b5;
+  color: #0077b5;
+}
+
+.social-github:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+}
+
 .footer-bottom {
   max-width: 1200px;
   margin: 0 auto;
@@ -1503,6 +1540,10 @@ body:hover .cursor { opacity: 1; }
 }
 
 @media (max-width: 768px) {
+  /* Disable custom cursor on touch devices */
+  body { cursor: auto; }
+  .cursor, .cursor-trail { display: none !important; }
+
   .nav-links, .nav-cta {
     display: none;
   }

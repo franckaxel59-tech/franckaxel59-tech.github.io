@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Franck Axel Kouamé | Systèmes, Réseaux & Sécurité</title>
   <meta name="description" content="Portfolio de Franck Axel Kouamé, étudiant en Bachelor 2 Systèmes, Réseaux et Sécurité à l'IPI Toulouse. Recherche alternance Bachelor 3 à partir de septembre 2026." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Franck Axel Kouamé | Systèmes, Réseaux & Sécurité" />
+  <meta property="og:description" content="Étudiant en Bachelor 2 SRS à l'IPI Toulouse. Expert en virtualisation, supervision réseau et automatisation. Recherche alternance Bach. 3 – Sept. 2026." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Kouame Franck.jpg" />
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236c63ff'/><stop offset='1' stop-color='%2300d4aa'/></linearGradient></defs><circle cx='50' cy='50' r='50' fill='url(%23g)'/><text y='.9em' x='50%' text-anchor='middle' font-family='monospace' font-size='40' font-weight='900' fill='white'>FAK</text></svg>" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -101,7 +111,7 @@
         <div class="avatar-ring ring-2"></div>
         <div class="avatar-ring ring-3"></div>
         <div class="avatar-core">
-          <div class="avatar-initials">FAK</div>
+          <img src="Kouame Franck.jpg" alt="Franck Axel Kouamé" class="avatar-photo" />
           <div class="avatar-glow"></div>
         </div>
         <div class="floating-badge badge-pos-1 glass-card">
@@ -638,6 +648,16 @@
               <span class="contact-value">Cergy / Paris, France</span>
             </div>
           </div>
+          <a href="https://www.linkedin.com/in/franck-axel-kouam%C3%A9-80a92a395" target="_blank" rel="noopener" class="contact-card glass-card">
+            <div class="contact-card-icon linkedin-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">Franck Axel Kouamé</span>
+            </div>
+            <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
           <a href="CV_Franck Axel_Kouame.pdf" download class="contact-card glass-card">
             <div class="contact-card-icon download-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
@@ -650,23 +670,28 @@
           </a>
         </div>
 
-        <form class="contact-form glass-card" id="contactForm">
+        <form class="contact-form glass-card" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- ⚠️ Remplacez YOUR_ACCESS_KEY par votre clé Web3Forms -->
+          <input type="hidden" name="access_key" value="7b31e24b-4f8a-4676-8d48-524e4a3dfa72" />
+          <input type="hidden" name="subject" value="Nouveau message depuis votre portfolio" />
+          <input type="hidden" name="from_name" value="Portfolio – Franck Axel Kouamé" />
+          <input type="checkbox" name="botcheck" style="display:none;" />
           <h3>Envoyer un message</h3>
           <div class="form-group">
             <label for="name">Nom complet</label>
-            <input type="text" id="name" placeholder="Jean Dupont" required />
+            <input type="text" id="name" name="name" placeholder="Jean Dupont" required />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="jean.dupont@email.com" required />
+            <input type="email" id="email" name="email" placeholder="jean.dupont@email.com" required />
           </div>
           <div class="form-group">
             <label for="subject">Sujet</label>
-            <input type="text" id="subject" placeholder="Proposition d'alternance" required />
+            <input type="text" id="subject" name="sujet" placeholder="Proposition d'alternance" required />
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Votre message..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
             <span>Envoyer le message</span>
@@ -675,6 +700,10 @@
           <div id="formSuccess" class="form-success" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             Message envoyé avec succès !
+          </div>
+          <div id="formError" class="form-error" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Une erreur est survenue. Veuillez réessayer.
           </div>
         </form>
       </div>
@@ -700,8 +729,11 @@
           <a href="mailto:franckaxelk26@gmail.com" class="social-link" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </a>
-          <a href="tel:+33759618215" class="social-link" aria-label="Téléphone">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.09-1.09a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="https://www.linkedin.com/in/franck-axel-kouam%C3%A9-80a92a395" target="_blank" rel="noopener" class="social-link social-linkedin" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://github.com/franckaxel59-tech" target="_blank" rel="noopener" class="social-link social-github" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
           </a>
           <a href="CV_Franck Axel_Kouame.pdf" download class="social-link" aria-label="CV">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -710,7 +742,7 @@
       </div>
       <div class="footer-bottom">
         <p>© 2026 Franck Axel Kouamé. Tous droits réservés.</p>
-        <p class="footer-made">Conçu avec ❤️ à Toulouse</p>
+        <p class="footer-made">Conçu avec ❤️</p>
       </div>
     </div>
   </footer>

@@ -7,38 +7,43 @@
 const cursor = document.getElementById('cursor');
 const cursorTrail = document.getElementById('cursorTrail');
 
-let mouseX = 0, mouseY = 0;
-let trailX = 0, trailY = 0;
+// Ne pas activer le curseur custom sur les appareils tactiles
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  cursor.style.left = mouseX + 'px';
-  cursor.style.top  = mouseY + 'px';
-});
+if (!isTouchDevice && cursor && cursorTrail) {
+  let mouseX = 0, mouseY = 0;
+  let trailX = 0, trailY = 0;
 
-// Smooth trail
-(function animTrail() {
-  trailX += (mouseX - trailX) * 0.15;
-  trailY += (mouseY - trailY) * 0.15;
-  cursorTrail.style.left = trailX + 'px';
-  cursorTrail.style.top  = trailY + 'px';
-  requestAnimationFrame(animTrail);
-})();
-
-// Cursor scale on hover
-document.querySelectorAll('a, button, .glass-card, .tech-tag').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
-    cursor.style.background = 'rgba(108,99,255,0.3)';
-    cursorTrail.style.transform = 'translate(-50%,-50%) scale(1.5)';
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top  = mouseY + 'px';
   });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-    cursor.style.background = 'var(--primary)';
-    cursorTrail.style.transform = 'translate(-50%,-50%) scale(1)';
+
+  // Smooth trail
+  (function animTrail() {
+    trailX += (mouseX - trailX) * 0.15;
+    trailY += (mouseY - trailY) * 0.15;
+    cursorTrail.style.left = trailX + 'px';
+    cursorTrail.style.top  = trailY + 'px';
+    requestAnimationFrame(animTrail);
+  })();
+
+  // Cursor scale on hover
+  document.querySelectorAll('a, button, .glass-card, .tech-tag').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+      cursor.style.background = 'rgba(108,99,255,0.3)';
+      cursorTrail.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      cursor.style.background = 'var(--primary)';
+      cursorTrail.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
   });
-});
+}
 
 /* ---------- NAVBAR ---------- */
 const navbar  = document.getElementById('navbar');
@@ -204,29 +209,43 @@ staggerReveal('.about-card', 100);
 staggerReveal('.skill-category', 100);
 staggerReveal('.timeline-item', 150);
 
-/* ---------- CONTACT FORM ---------- */
+/* ---------- CONTACT FORM – Web3Forms ---------- */
 const form      = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 const success   = document.getElementById('formSuccess');
+const error     = document.getElementById('formError');
 
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
 
     submitBtn.disabled = true;
     submitBtn.querySelector('span').textContent = 'Envoi en cours...';
+    if (success) success.style.display = 'none';
+    if (error)   error.style.display   = 'none';
 
-    // Simulate send
-    setTimeout(() => {
-      success.style.display = 'flex';
-      form.reset();
+    const data = new FormData(form);
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        if (success) success.style.display = 'flex';
+        form.reset();
+        setTimeout(() => { if (success) success.style.display = 'none'; }, 6000);
+      } else {
+        if (error) error.style.display = 'flex';
+      }
+    } catch (err) {
+      if (error) error.style.display = 'flex';
+    } finally {
       submitBtn.disabled = false;
       submitBtn.querySelector('span').textContent = 'Envoyer le message';
-
-      setTimeout(() => {
-        success.style.display = 'none';
-      }, 5000);
-    }, 1200);
+    }
   });
 
   // Live label animation
