@@ -1,0 +1,194 @@
+                                     Projet Technique
+                                    Migration Infrastructure Open-
+                                         Source & Automatisation
+
+
+
+
+       INFORMATIONS DU DOCUMENT
+
+
+                       AUTEURS
+CELOWEN   LACOSSE Nicolas
+
+                       VERSIONS
+V1.0      21/01/2026     Création
+
+
+
+
+                  DESTINATAIRES
+CELOWEN   Apprenants B2 RS
+Projet Technique
+
+
+
+
+                                                SOMMAIRE
+1         MISE EN PLACE DE L’INFRASTRUCTURE DE PIXELFORGE STUDIO........2
+    1.1      CONTEXTE GÉNÉRAL ..........................................................................................2
+    1.2      DISCLAIMER...................................................................................................2
+2         RÉPARTITION DES ÉQUIPES (3 À 5 PERSONNES) ....................................... 3
+3         ORGANISATION DU TP (5 JOURS) .................................................................. 4
+    3.1      PLANNING PRÉVISIONNEL...........................................................................4
+    3.2      LIVRABLES ATTENDUS ........................................................................................4
+4         CRITÈRES D’ÉVALUATION...............................................................................5
+5         ÉVALUATIONS CROISÉES ............................................................................... 6
+
+
+
+
+© Celowen, tous droits réservés.Page 1 sur 7
+Projet Technique
+
+
+
+1 M ISE EN PLACE DE                              L ’ INFRASTRUCTURE                 DE
+  P IXEL F ORGE S TUDIO
+
+       1.1 C ONTEXTE        GÉNÉRAL
+
+
+
+       Suite à son expansion à Toulouse, le studio de création PixelForge a décidé de
+basculer l'intégralité de son infrastructure sous des technologies Open-Source.
+L'objectif est double : s'affranchir des licences propriétaires et automatiser la gestion
+du parc informatique.
+Votre équipe décide de concevoir un environnement de production 100% Linux
+(Debian/Ubuntu) intégrant un annuaire centralisé, des services cloud conteneurisés et
+un système de déploiement automatisé.
+Contraintes techniques majeures :
+   ·   Système : Environnement exclusivement Linux (Serveurs et Postes clients).
+   ·   Identité : Centralisation des comptes via un contrôleur de domaine Samba 4
+       AD.
+   ·   Services : Plateforme de stockage Nextcloud déployée sous Docker ou
+       equivalent.
+   ·   Déploiement : Configuration des postes clients via Ansible (zéro configuration
+       manuelle).
+   ·   Gestion des accès : Seuls les administrateurs du domaine AD doivent avoir des
+       droits sudo sur les machines Linux.
+
+
+
+       1.2 DISCLAIMER
+
+
+       Toute les sources et aides sont autorisées, l’IA comprise.
+      CEPENDANT !        L’utilisation de l’IA devra être signalé dans la
+documentation, qu’elle est concernait des recherches, de l’aide a la
+configuration ou de la rédaction.
+       Faillissez à cela, et vous connaitrez l’enfer…
+
+
+
+
+© Celowen, tous droits réservés.Page 2 sur 7
+           Projet Technique
+
+
+
+
+           2 R ÉPARTITION DES ÉQUIPES (3 À 5 PERSONNES)
+           Chaque membre du groupe doit être responsable d'une brique majeure. Les rôles G4 et G5 s'ajoutent selon l'effectif du groupe.
+
+
+
+
+RÔLE TECHNIQUE                                            MISSIONS PRINCIPALES
+
+
+
+Admin Directory                                           Installation Samba 4 AD, DNS interne, gestion des utilisateurs et des groupes.
+
+DevOps & Cloud                                            Installation Docker, déploiement Nextcloud, liaison LDAP avec l'AD de G1.
+
+Automate & Client                                         Serveur Ansible, Playbooks de jonction AD, gestion des droits sudo pour les admins.
+
+SecOps (4 pers.)                                          Hardening SSH, Firewalling (UFW), Fail2ban sur l'ensemble des serveurs (et plus si possible)
+
+Supervision (5 pers.)                                     Serveur Zabbix ou Prometheus, dashboard de santé, alertes mail/logs.
+
+
+
+
+           © Celowen, tous droits réservés.Page 3 sur 7
+     Projet Technique
+
+
+
+
+     3 O RGANISATION DU TP (5 JOURS )
+
+           3.1 PLANNING PRÉVISIONNEL
+
+
+J OUR      M ATIN                                                          A PRES -M IDI
+
+J1         Analyse du sujet, installation des OS et configuration réseau   Début installation Samba 4 et Docker.
+           statique.
+
+
+
+J2         Finalisation de l'AD. Tests de ping et résolution DNS.          Déploiement Nextcloud et tentatives de
+                                                                           liaison LDAP.
+
+J3         Mise en place d'Ansible. Écriture des Playbooks de jonction     Tests de déploiement sur les postes
+           AD.c                                                            clients. Configuration Sudoers.
+
+J4         Sécurisation et Supervision. Tests d'intégration globaux.       Rédaction       des      documentations
+                                                                           techniques et utilisateurs.
+
+J5         "Chaos Monkey" (on casse un service et on répare) +             Soutenances finales (15 min / groupe).
+           Répétition.
+
+
+
+           3.2 L IVRABLES A TTENDUS
+        1 Dossier Technique (10-15 p.) : Schéma réseau, fichiers docker-compose.yml,
+          Playbooks Ansible, et preuves de bon fonctionnement.
+        2 Documentation Utilisateur (1-2 p.) : Guide simplifié pour l'accès aux services.
+        3 Soutenance Orale : Présentation du projet et démonstration en direct
+          (Démontrer qu'un utilisateur créé sur l'AD peut se connecter sur un PC et sur
+          Nextcloud). Vous devrez « vendre » à l’administration que c’est ce qu’il faut
+          faire et vous battre pour l’acceptation du POC que vous avez préparé à l’echelle
+          de l’entreprise.
+
+
+
+
+     © Celowen, tous droits réservés.Page 4 sur 7
+Projet Technique
+
+
+
+4 C RITÈRES D ’ ÉVALUATION
+   ·   Maîtrise Technique (Samba/Docker/Ansible) : 35 pts
+   ·   Sécurité & Privilèges (Hardening, Sudoers AD) : 15 pts
+   ·   Qualité de la Documentation & Schémas : 20 pts
+   ·   Présentation Orale & Démonstration : 20 pts
+   ·   Travail Collaboratif (Partage de scripts/Git) : 10 pts
+   ·   Bonus (tout ce qui peut être un vrai plus pour l’utilisateur, la sécurité, la gestion,
+       etc) : +10 pts
+
+
+
+
+© Celowen, tous droits réservés.Page 5 sur 7
+Projet Technique
+
+
+
+5 É VALUATIONS CROISÉES
+Pour valider le projet, chaque groupe devra passer les tests suivants :
+   1 Création d'un user "Admin_Toulouse" dans l'AD : il doit être sudo sur tous les
+     postes Linux.
+   2 Création d'un user "Collaborateur" : il ne doit pas être sudo mais doit pouvoir se
+     connecter à Nextcloud.
+   3 Redémarrage complet : Tout l'environnement (Conteneurs, AD, Partages) doit
+     remonter automatiquement au boot.
+
+
+
+
+© Celowen, tous droits réservés.Page 6 sur 7
+
